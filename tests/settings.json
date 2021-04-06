@@ -1,0 +1,49 @@
+{
+	"profiles": {
+		"test_01": {
+			"evaluators": [
+				{
+					"class": "pscodeanalyzer.rules.peoplecode.PeopleCodeParserProxy",
+					"description": "PeopleCode parser rule proxy",
+					"evaluators": [
+						{
+							"class": "pscodeanalyzer.rules.peoplecode.SQLExecRule",
+							"description": "Look for SQLExec calls with string literals",
+							"code": 2
+						}
+					],
+					"encoding": "utf-8"
+				}
+			]
+		},
+		"test_02": {
+			"evaluators": [
+				{
+					"class": "pscodeanalyzer.rules.peoplecode.PeopleCodeParserProxy",
+					"description": "PeopleCode parser rule proxy",
+					"evaluators": [
+						{
+							"class": "pscodeanalyzer.rules.peoplecode.SQLExecRule",
+							"description": "Look for SQLExec calls with string literals",
+							"code": 2
+						},
+						{
+							"class": "pscodeanalyzer.rules.peoplecode.SymbolDefinitionPhaseRule",
+							"description": "Symbol definition phase for undeclared variable validation",
+							"code": 9999,
+							"exclude_source_types": [58]
+						},
+						{
+							"class": "pscodeanalyzer.rules.peoplecode.SymbolReferencePhaseRule",
+							"description": "Symbol reference phase for undeclared variable validation",
+							"code": 3,
+							"exclude_source_types": [58],
+							"inherit_annotations": true
+						}
+					],
+					"encoding": "utf-8"
+				}
+			]
+		}
+	}
+}
