@@ -331,13 +331,13 @@ class Rule(Evaluator):
         if source is None:
             raise ValueError(f'"{source}" cannot be None')
         if type(source) is str:
-            reports = self.evaluate_file(source)
-        else:
             if os.path.isfile(source):
                 with open(source) as source_file:
                     reports = self.evaluate_file(source_file)
             else:
                 raise ValueError(f'"{source}" not found or not a file')
+        else:
+            reports = self.evaluate_file(source)
         return reports
 
     def evaluate_file(self, source_file):

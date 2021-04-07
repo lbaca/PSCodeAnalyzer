@@ -9,10 +9,9 @@
 						{
 							"class": "pscodeanalyzer.rules.peoplecode.SQLExecRule",
 							"description": "Look for SQLExec calls with string literals",
-							"code": 2
+							"code": 1
 						}
-					],
-					"encoding": "utf-8"
+					]
 				}
 			]
 		},
@@ -25,7 +24,7 @@
 						{
 							"class": "pscodeanalyzer.rules.peoplecode.SQLExecRule",
 							"description": "Look for SQLExec calls with string literals",
-							"code": 2
+							"code": 1
 						},
 						{
 							"class": "pscodeanalyzer.rules.peoplecode.SymbolDefinitionPhaseRule",
@@ -36,12 +35,56 @@
 						{
 							"class": "pscodeanalyzer.rules.peoplecode.SymbolReferencePhaseRule",
 							"description": "Symbol reference phase for undeclared variable validation",
-							"code": 3,
+							"code": 2,
 							"exclude_source_types": [58],
 							"inherit_annotations": true
 						}
-					],
-					"encoding": "utf-8"
+					]
+				}
+			]
+		},
+		"test_03": {
+			"evaluators": [
+				{
+					"class": "pscodeanalyzer.rules.peoplecode.PeopleCodeParserProxy",
+					"description": "PeopleCode parser rule proxy",
+					"evaluators": [
+						{
+							"class": "samplerules.model.LocalVariableNamingRule",
+							"description": "Enforce locally-defined variable naming conventions",
+							"code": 3,
+							"variable_prefix": "&yo"
+						}
+					]
+				}
+			]
+		},
+		"test_04": {
+			"substitutions": {
+				"REQUIRED_WORD": "FOOBAR"
+			},
+			"evaluators": [
+				{
+					"class": "RegexRule",
+					"description": "Trailing blanks should be avoided",
+					"code": 4,
+					"default_report_type": "WARNING",
+					"pattern": "\\s+$"
+				},
+				{
+					"class": "RegexRule",
+					"description": "Required word not found: #REQUIRED_WORD#",
+					"code": 5,
+					"default_report_type": "WARNING",
+					"pattern": "\\b#REQUIRED_WORD#\\b",
+					"invert": true
+				},
+				{
+					"class": "samplerules.model.LineLengthRule",
+					"description": "The line is too long",
+					"code": 6,
+					"default_report_type": "WARNING",
+					"max_length": 79
 				}
 			]
 		}

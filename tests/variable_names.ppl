@@ -1,0 +1,11 @@
+Local string &var1;
+Local string &yo;
+Local number &var2, &var3, &var4;
+Local string &var5 = "Some value";
+Local number &var6 = (&var2 + &var3) * &var4;
+
+Local boolean &var7, &yo1;
+Local boolean &yo2, &var8;
+Local integer &var9, &yo3, &var10;
+Local datetime &yo4 = %DateTime;
+Local date &yo5 = Date3(1999, 12, 31);

@@ -1,0 +1,7 @@
+This is a thought exercise.
+
+Imagine, if you will, a language coding style opinionated to believe that lines longer than 79 characters are wrong.
+
+Let's also detect trailing blanks -->    
+
+This file will only be valid if it has the word FOOBRA in it. ;)
